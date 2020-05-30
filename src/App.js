@@ -17,7 +17,8 @@ class App extends React.Component {
     event.preventDefault()
     const text = this.text.value
     const completed = false
-    const info = {text: text, completed: completed}
+    const id = Date.now()
+    const info = {text: text, completed: completed, id: id}
     this.setState(prevState => ({
       toDosList: [...prevState.toDosList, info]
     }))
@@ -49,7 +50,7 @@ class App extends React.Component {
     console.log(this.state.toDosList)
     
     const viewList = this.state.toDosList.map(item =>
-      <TodoItems key={item.text} item={item} handleChange={this.handleChange} />
+      <TodoItems key={item.id} item={item} handleChange={this.handleChange} />
     )
 
     return (
